@@ -1,22 +1,17 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+// import parse from './src/parse.js';
 
 const getPath = (filepath) => path.resolve(process.cwd(), filepath);
 const readFile = (filepath) => fs.readFileSync(getPath(filepath), 'utf8');
-const getFileToCompare = (filePath) => {
-  try {
-    return JSON.parse(readFile(filePath));
-  } catch (e) {
-    console.log('ERROR: Wrong path');
-  }
-  return console.error();
-};
+const getFileToCompare = (filePath) => JSON.parse(readFile(filePath));
+// const getFileToCompare = parse(readFile(filepath));
+
 const getDiff = (data1, data2) => {
   const keys1 = Object.keys(data1);
   const keys2 = Object.keys(data2);
-  const keys = _.union(keys1, keys2);
-  const sortedKey = _.sortBy(keys);
+  const sortedKey = _.sortBy(_.union(keys1, keys2));
 
   const result = sortedKey
     .map((key) => {
@@ -32,14 +27,12 @@ const getDiff = (data1, data2) => {
       return `  ${[key]}: ${data1[key]}`; // unchanged
     })
     .flat(2);
-
   return `\n{\n  ${result.join('\n  ')}\n}`;
 };
 
 const genDiff = (filepath1, filepath2) => {
   const file1 = getFileToCompare(filepath1);
   const file2 = getFileToCompare(filepath2);
-  return console.log(getDiff(file1, file2));
+  return getDiff(file1, file2);
 };
-
 export default genDiff;
