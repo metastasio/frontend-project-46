@@ -18,4 +18,5 @@ const file2yml = './__fixtures__/file2yml.yml';
 test('genDiff', () => {
   expect(genDiff(file1, file2)).toEqual(testJsonOutput);
   expect(genDiff(file1yml, file2yml)).toEqual(testJsonOutput);
+  expect(genDiff(file1yml, file2)).toEqual(testJsonOutput);
 });
