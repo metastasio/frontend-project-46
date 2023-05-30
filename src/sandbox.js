@@ -7,10 +7,10 @@ const getDiff = (data1, data2) => {
 
   const result = sortedKey.map((key) => {
     if (!Object.hasOwn(data1, key)) {
-      return { type: 'added', key: key, value: data2[key] };
+      return { type: 'added', key, value: data2[key] };
     }
     if (!Object.hasOwn(data2, key)) {
-      return { type: 'deleted', key: key, value: data1[key] };
+      return { type: 'deleted', key, value: data1[key] };
     }
     if (
       Object.hasOwn(data1, key) &&
@@ -20,19 +20,19 @@ const getDiff = (data1, data2) => {
     ) {
       return {
         type: 'node',
-        key: key,
+        key,
         children: getDiff(data1[key], data2[key]),
       };
     }
     if (data1[key] !== data2[key]) {
       return {
         type: 'changed',
-        key: key,
+        key,
         value1: data1[key],
         value2: data2[key],
       };
     }
-    return { type: 'unchanged', key: key, value: data1[key] };
+    return { type: 'unchanged', key, value: data1[key] };
   });
 
   return result;
@@ -96,8 +96,6 @@ const b = {
 };
 
 const difference = getDiff(a, b);
-// console.log(difference, 'DIFFERENCE');
-// console.log();
 
 const stringify = (value, replacer = '.', spacesCount = 1) => {
   const iter = (currentValue, depth) => {
@@ -149,5 +147,3 @@ const formatter = (diff) => {
   return result;
 };
 const test = formatter(difference);
-// console.log(test);
-console.log(stringify(test));
