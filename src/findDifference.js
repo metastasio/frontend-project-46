@@ -12,12 +12,7 @@ const findDifference = (data1, data2) => {
     if (!Object.hasOwn(data2, key)) {
       return { type: 'deleted', key, value: data1[key] };
     }
-    if (
-      Object.hasOwn(data1, key) &&
-      Object.hasOwn(data2, key) &&
-      typeof data1[key] === 'object' &&
-      typeof data2[key] === 'object'
-    ) {
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
       return {
         type: 'node',
         key,
