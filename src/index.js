@@ -12,6 +12,7 @@ const getExtension = (filepath) => path.extname(filepath);
 // const getFileToCompare = (filePath) => JSON.parse(readFile(filePath));
 // const getFileToCompare = parse(getExtension(filepath), readFile(filepath));
 
+// CHANGE PLAIN TO STYLISH!!!!!!!!
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const fileToParse1 = readFile(filepath1);
   const fileToParse2 = readFile(filepath2);
