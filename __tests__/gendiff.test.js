@@ -9,20 +9,20 @@ const __dirname = path.dirname(__filename);
 const getPath = (file) => path.join(__dirname, '..', '__fixtures__', file);
 const readFile = (file) => fs.readFileSync(getPath(file), 'utf-8');
 
-const testNestedOutput = readFile('testJsonOutputnested.txt');
-const testPlain = readFile('testJsonOutputnested_plain.txt');
-const file1nested = './__fixtures__/file1nested.json';
-const file2nested = './__fixtures__/file2nested.json';
+const testStylish = readFile('testStylish.txt');
+const testPlain = readFile('testPlain.txt');
+const testJson = readFile('testJson.txt');
 
-const file1ymlnested = './__fixtures__/file1ymlnested.yml';
-const file2ymlnested = './__fixtures__/file2ymlnested.yml';
+const file1 = './__fixtures__/file1.json';
+const file2 = './__fixtures__/file2.json';
+const file1yml = './__fixtures__/file1yml.yml';
+const file2yml = './__fixtures__/file2yml.yml';
 
 test('genDiff', () => {
-  expect(genDiff(file1nested, file2nested)).toEqual(testNestedOutput);
-  expect(genDiff(file1ymlnested, file2ymlnested)).toEqual(testNestedOutput);
-  expect(genDiff(file1nested, file2ymlnested)).toEqual(testNestedOutput);
-  expect(genDiff(file1nested, file2nested, 'stylish')).toEqual(
-    testNestedOutput,
-  );
-  expect(genDiff(file1nested, file2nested, 'plain')).toEqual(testPlain);
+  expect(genDiff(file1, file2)).toEqual(testStylish);
+  expect(genDiff(file1yml, file2yml)).toEqual(testStylish);
+  expect(genDiff(file1, file2yml)).toEqual(testStylish);
+  expect(genDiff(file1, file2, 'stylish')).toEqual(testStylish);
+  expect(genDiff(file1, file2, 'plain')).toEqual(testPlain);
+  expect(genDiff(file1, file2, 'json')).toEqual(testJson);
 });
