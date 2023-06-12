@@ -6,10 +6,8 @@ import genDiff from '../src/index.js';
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const getFixturePath = (filename) =>
-  path.join(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) =>
-  fs.readFileSync(getFixturePath(filename), 'utf-8');
+const getPath = (file) => path.join(__dirname, '..', '__fixtures__', file);
+const readFile = (file) => fs.readFileSync(getPath(file), 'utf-8');
 
 const testNestedOutput = readFile('testJsonOutputnested.txt');
 const testPlain = readFile('testJsonOutputnested_plain.txt');
