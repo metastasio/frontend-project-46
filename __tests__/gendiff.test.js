@@ -6,7 +6,7 @@ import genDiff from '../src/index.js';
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const getPath = (file) => path.join(__dirname, '..', '__fixtures__', file);
+const getPath = (file) => path.join(__dirname, '../__fixtures__', file);
 const readFile = (file) => fs.readFileSync(getPath(file), 'utf-8');
 
 const testStylish = readFile('testStylish.txt');
