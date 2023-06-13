@@ -9,8 +9,8 @@
 
 **Utility features:**
 
-- Supports yaml and json input formats
-- Report can be generated in the form of a plain text, json output or stylish format
+- Supports YAML and JSON input formats
+- Report can be generated in the form of a plain text, JSON output or stylish format
 
 <br>
 
@@ -30,7 +30,7 @@ npm link
 
 **Usage example:**
 <br>
-You can choose the output format by using the flag **--format (-f)** with either **plain**, **json** or **stylish**. <br>
+You can choose the output format by using the flag **--format (-f)** with either **plain**, **JSON** or **stylish**. <br>
 Default output format is 'stylish':
 ```
 gendiff path/to/file1 path/to/file2
@@ -44,7 +44,7 @@ gendiff -f plain path/to/file1 path/to/file2
 ```
 [![asciicast](https://asciinema.org/a/cmvPxD1DPjbTdoTIr2aBcBtkz.svg)](https://asciinema.org/a/cmvPxD1DPjbTdoTIr2aBcBtkz)
 <br>
-Plain output: <br>
+JSON output: <br>
 ```
 gendiff -f json path/to/file1 path/to/file2
 ```
