@@ -19,32 +19,33 @@ const stringify = (value, depth) => {
 const stylish = (diff) => {
   const iter = (currentValue, depth) => {
     const result = currentValue.flatMap((item) => {
+      const currentDepth = indent(depth);
       switch (item.type) {
         case 'deleted':
-          return `${indent(depth)}- ${item.key}: ${stringify(
+          return `${currentDepth}- ${item.key}: ${stringify(
             item.value,
             depth + 1,
           )}`;
         case 'added':
-          return `${indent(depth)}+ ${item.key}: ${stringify(
+          return `${currentDepth}+ ${item.key}: ${stringify(
             item.value,
             depth + 1,
           )}`;
         case 'unchanged':
-          return `${indent(depth)}  ${item.key}: ${stringify(
+          return `${currentDepth}  ${item.key}: ${stringify(
             item.value,
             depth + 1,
           )}`;
         case 'node':
-          return `${indent(depth)}  ${item.key}: ${iter(
+          return `${currentDepth}  ${item.key}: ${iter(
             item.children,
             depth + 1,
           )}`;
         case 'changed':
-          return `${indent(depth)}- ${item.key}: ${stringify(
+          return `${currentDepth}- ${item.key}: ${stringify(
             item.value1,
             depth + 1,
-          )}\n${indent(depth)}+ ${item.key}: ${stringify(
+          )}\n${currentDepth}+ ${item.key}: ${stringify(
             item.value2,
             depth + 1,
           )}`;
