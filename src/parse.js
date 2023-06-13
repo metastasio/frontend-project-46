@@ -1,5 +1,4 @@
 import { load } from 'js-yaml';
-// const parse = (file) => JSON.parse(file);
 
 const parse = (extension, file) => {
   switch (extension) {
