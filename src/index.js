@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-// import getDiff from './getDiff.js';
 import parse from './parse.js';
 import getFormatted from './formatters/index.js';
 import findDifference from './findDifference.js';
@@ -8,9 +7,6 @@ import findDifference from './findDifference.js';
 const getPath = (filepath) => path.resolve(process.cwd(), filepath);
 const readFile = (filepath) => fs.readFileSync(getPath(filepath), 'utf8');
 const getExtension = (filepath) => path.extname(filepath);
-
-// const getFileToCompare = (filePath) => JSON.parse(readFile(filePath));
-// const getFileToCompare = parse(getExtension(filepath), readFile(filepath));
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const fileToParse1 = readFile(filepath1);
