@@ -14,7 +14,8 @@
 
 <br>
 
-**Installation** <br>
+**Installation** 
+<br>
 To be able to run this program you need to have **Node.JS** installed.
 ```
 git clone https://github.com/metastasio/frontend-project-44.git
@@ -28,3 +29,23 @@ npm link
 <br>
 
 **Usage example:**
+<br>
+You can choose the output format by using the flag **--format (-f)** with either **plain**, **json** or **stylish**. <br>
+Default output format is 'stylish':
+```
+gendiff path/to/file1 path/to/file2
+```
+[![asciicast](https://asciinema.org/a/ADuQicl5F0uwd12CpK3p9yDdb.svg)](https://asciinema.org/a/ADuQicl5F0uwd12CpK3p9yDdb)
+<br>
+
+Plain output: <br>
+```
+gendiff -f plain path/to/file1 path/to/file2
+```
+[![asciicast](https://asciinema.org/a/cmvPxD1DPjbTdoTIr2aBcBtkz.svg)](https://asciinema.org/a/cmvPxD1DPjbTdoTIr2aBcBtkz)
+<br>
+Plain output: <br>
+```
+gendiff -f json path/to/file1 path/to/file2
+```
+[![asciicast](https://asciinema.org/a/xTaRfXiL8dPQmyF5JSQVn87Zb.svg)](https://asciinema.org/a/xTaRfXiL8dPQmyF5JSQVn87Zb)
