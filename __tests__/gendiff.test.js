@@ -13,16 +13,14 @@ const testStylish = readFile('testStylish.txt');
 const testPlain = readFile('testPlain.txt');
 const testJson = readFile('testJson.txt');
 
-const file1 = './__fixtures__/file1.json';
-const file2 = './__fixtures__/file2.json';
-const file1yml = './__fixtures__/file1yml.yml';
-const file2yml = './__fixtures__/file2yml.yml';
+const extensions = ['yml', 'json'];
 
-test('genDiff', () => {
-  expect(genDiff(file1, file2)).toEqual(testStylish);
-  expect(genDiff(file1yml, file2yml)).toEqual(testStylish);
-  expect(genDiff(file1, file2yml)).toEqual(testStylish);
-  expect(genDiff(file1, file2, 'stylish')).toEqual(testStylish);
-  expect(genDiff(file1, file2, 'plain')).toEqual(testPlain);
-  expect(genDiff(file1, file2, 'json')).toEqual(testJson);
+test.each([extensions])('gendiff', (extension) => {
+  const fileBefore = getPath(`file1.${extension}`);
+  const fileAfter = getPath(`file2.${extension}`);
+
+  expect(genDiff(fileBefore, fileAfter)).toEqual(testStylish);
+  expect(genDiff(fileBefore, fileAfter, 'stylish')).toEqual(testStylish);
+  expect(genDiff(fileBefore, fileAfter, 'plain')).toEqual(testPlain);
+  expect(genDiff(fileBefore, fileAfter, 'json')).toEqual(testJson);
 });
